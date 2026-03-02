@@ -323,7 +323,6 @@ public class Main {
 
         boolean encontrada = false;
         for (Nota n : notas) {
-            // Comparamos ambos códigos ignorando mayúsculas/minúsculas
             if (n.getEstudiante().getCodigo().equalsIgnoreCase(codE)
                     && n.getAsignatura().getCodigo().equalsIgnoreCase(codA)) {
 
@@ -342,8 +341,7 @@ public class Main {
         }
     }
 
-    private static void actualizarNota() 
-    {
+    private static void actualizarNota() {
         System.out.println("\n--- ACTUALIZAR NOTA ---");
         System.out.print("Ingrese código del estudiante: ");
         String codE = sc.nextLine();
@@ -357,14 +355,29 @@ public class Main {
                 System.out.print("Nota actual: " + n.getValor() + ". Ingrese el nuevo valor: ");
                 n.setValor(sc.nextDouble());
                 sc.nextLine(); // Limpiar buffer
-                System.out.println("✅ Nota actualizada correctamente.");
+                System.out.println("Nota actualizada correctamente.");
                 return;
             }
         }
-        System.out.println("❌ No se encontró un registro que coincida con esos datos.");
+        System.out.println("No se encontró un registro que coincida con esos datos.");
     }
 
     private static void eliminarNota() {
+        System.out.println("\n--- ELIMINAR NOTA ---");
+        System.out.print("Ingrese código del estudiante: ");
+        String codE = sc.nextLine();
+        System.out.print("Ingrese código de la asignatura: ");
+        String codA = sc.nextLine();
 
+        boolean eliminado = notas.removeIf(n
+                -> n.getEstudiante().getCodigo().equalsIgnoreCase(codE)
+                && n.getAsignatura().getCodigo().equalsIgnoreCase(codA)
+        );
+
+        if (eliminado) {
+            System.out.println("Registro de nota eliminado exitosamente.");
+        } else {
+            System.out.println("No se encontró ninguna nota para eliminar con esos datos.");
+        }
     }
 }
