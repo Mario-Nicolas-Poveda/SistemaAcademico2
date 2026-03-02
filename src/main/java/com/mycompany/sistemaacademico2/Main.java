@@ -184,7 +184,21 @@ public class Main {
             System.out.println("Error, no se encontro un estudiante con el codigo ingresado");
         }
     }
-    private static void registrarAsignatura() {}
+     public static void registrarAsignatura() {
+        System.out.print("Codigo: ");
+        String codigo = sc.nextLine();
+
+        System.out.print("Nombre: ");
+        String nombre = sc.nextLine();
+
+        System.out.print("Creditos: ");
+        int creditos = sc.nextInt();
+        sc.nextLine();
+        
+        listaAsignaturas.add(new Asignatura(codigo, nombre, creditos));
+        System.out.println("Asignatura registrada correctamente.");
+
+     }
     private static void listarAsignaturas() {}
     private static void buscarAsignatura() {}
     private static void actualizarAsignatura() {}
