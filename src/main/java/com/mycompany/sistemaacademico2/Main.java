@@ -315,11 +315,34 @@ public class Main {
     }
 
     private static void buscarNota() {
-
+        System.out.print("Código del estudiante a buscar: ");
+        String cod = sc.nextLine();
+        boolean existe = false;
+        for (int i = 0; i < notas.size(); i++) {
+            if (notas.get(i).getEstudiante().getCodigo().equalsIgnoreCase(cod)) {
+                System.out.println(notas.get(i).toString());
+                existgit e = true;
+            }
+        }
+        if (!existe) {
+            System.out.println("No hay notas para ese estudiante.");
+        }
     }
 
     private static void actualizarNota() {
-
+        System.out.print("Código Estudiante para cambiar nota: ");
+        String cod = sc.nextLine();
+        for (int i = 0; i < notas.size(); i++) {
+            if (notas.get(i).getEstudiante().getCodigo().equalsIgnoreCase(cod)) {
+                System.out.print("Nueva nota: ");
+                double nueva = sc.nextDouble();
+                sc.nextLine();
+                notas.get(i).setValor(nueva);
+                System.out.println("✅ Nota actualizada.");
+                return;
+            }
+        }
+        System.out.println("❌ Registro no encontrado.");
     }
 
     private static void eliminarNota() {
