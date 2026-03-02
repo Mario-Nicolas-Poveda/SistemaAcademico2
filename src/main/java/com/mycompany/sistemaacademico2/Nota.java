@@ -45,5 +45,10 @@ public class Nota
         this.periodo = periodo;
     }
     
-    
+    @Override
+    public String toString() {
+        return "Nota{" + "estudiante=" + estudiante.getNombre() + 
+           ", asignatura=" + asignatura.getNombre() + 
+           ", valor=" + valor + ", periodo=" + periodo + '}';
+    }
 }
