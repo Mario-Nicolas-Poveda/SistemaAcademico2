@@ -315,7 +315,31 @@ public class Main {
     }
 
     private static void buscarNota() {
+        System.out.println("\n--- BUSCAR NOTA ---");
+        System.out.print("Ingrese el código del estudiante: ");
+        String codE = sc.nextLine();
+        System.out.print("Ingrese el código de la asignatura: ");
+        String codA = sc.nextLine();
 
+        boolean encontrada = false;
+        for (Nota n : notas) {
+            // Comparamos ambos códigos ignorando mayúsculas/minúsculas
+            if (n.getEstudiante().getCodigo().equalsIgnoreCase(codE)
+                    && n.getAsignatura().getCodigo().equalsIgnoreCase(codA)) {
+
+                System.out.println("\nNota encontrada:");
+                System.out.println("Estudiante: " + n.getEstudiante().getNombre());
+                System.out.println("Asignatura: " + n.getAsignatura().getNombre());
+                System.out.println("Calificación: " + n.getValor());
+                System.out.println("Periodo: " + n.getPeriodo());
+                encontrada = true;
+                break;
+            }
+        }
+
+        if (!encontrada) {
+            System.out.println("No se encontró ningún registro para el estudiante " + codE + " en la asignatura " + codA);
+        }
     }
 
     private static void actualizarNota() {
