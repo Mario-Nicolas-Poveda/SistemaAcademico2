@@ -126,7 +126,44 @@ public class Main {
             System.out.println("Error, no se encontro un estudiante con el codigo ingresado");
         }
     }
-    private static void actualizarEstudiante() {}
+    
+    private static void actualizarEstudiante() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("\nActualizar Estudiante");
+        System.out.print("Ingrese el codigo del estudiante a actualizar: ");
+        String codigo = sc.nextLine();
+
+        boolean encontrado = false;
+        for (Estudiante e : estudiantes) {
+            if (e.getCodigo().equalsIgnoreCase(codigo)) {
+                System.out.println("Estudiante encontrado: " + e);
+
+                System.out.print("Nuevo nombre (actual: " + e.getNombre() + "): ");
+                String nombre = sc.nextLine();
+                if (!nombre.isEmpty()) e.setNombre(nombre);
+
+                System.out.print("Nuevo apellido (actual: " + e.getApellido() + "): ");
+                String apellido = sc.nextLine();
+                if (!apellido.isEmpty()) e.setApellido(apellido);
+
+                System.out.print("Nueva edad (actual: " + e.getEdad() + "): ");
+                String edadStr = sc.nextLine();
+                if (!edadStr.isEmpty()) e.setEdad(Integer.parseInt(edadStr));
+
+                System.out.print("Nuevo semestre (actual: " + e.getSemestre() + "): ");
+                String semestreStr = sc.nextLine();
+                if (!semestreStr.isEmpty()) e.setSemestre(Integer.parseInt(semestreStr));
+
+                System.out.println("Estudiante actualizado correctamente");
+                encontrado = true;
+                break;
+            }
+        }
+
+        if (!encontrado) {
+            System.out.println("Error, no se encontro un estudiante con el codigo ingresado");
+        }
+    }
     private static void eliminarEstudiante() {}
     private static void registrarAsignatura() {}
     private static void listarAsignaturas() {}
