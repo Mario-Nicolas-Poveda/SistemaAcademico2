@@ -237,7 +237,20 @@ public class Main {
         System.out.println("Asignatura actualizada.");
     }
 
-    private static void eliminarAsignatura() {}
+    public static void eliminarAsignatura() {
+        System.out.print("Código de la asignatura a eliminar: ");
+        String codigo = sc.nextLine();
+
+        Asignatura a = buscarAsignatura(codigo);
+        if (a == null) {
+            System.out.println("Asignatura no encontrada.");
+            return;
+        }
+
+        listaAsignaturas.remove(a);
+        System.out.println("Asignatura eliminada.");
+    }
+
     private static void registrarNota() {}
     private static void listarNotas() {}
     private static void buscarNota() {}
