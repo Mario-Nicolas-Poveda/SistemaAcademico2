@@ -70,7 +70,31 @@ public class Main {
 
         sc.close();
     }
-    private static void registrarEstudiante() {}
+    private static void registrarEstudiante() {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("\nRegistrar Estudiante");
+        System.out.print("Codigo: ");
+        String codigo = sc.nextLine();
+
+        System.out.print("Nombre: ");
+        String nombre = sc.nextLine();
+
+        System.out.print("Apellido: ");
+        String apellido = sc.nextLine();
+
+        System.out.print("Edad: ");
+        int edad = sc.nextInt();
+
+        System.out.print("Semestre: ");
+        int semestre = sc.nextInt();
+        sc.nextLine(); 
+
+        Estudiante estudiante = new Estudiante(codigo, nombre, apellido, edad, semestre);
+        estudiantes.add(estudiante);
+
+        System.out.println("Estudiante registrado correctamente.");
+    }
     private static void listarEstudiantes() {}
     private static void buscarEstudiante() {}
     private static void actualizarEstudiante() {}
