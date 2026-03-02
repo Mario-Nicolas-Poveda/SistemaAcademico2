@@ -346,6 +346,15 @@ public class Main {
     }
 
     private static void eliminarNota() {
-
+        System.out.print("Código Estudiante de la nota a borrar: ");
+        String cod = sc.nextLine();
+        for (int i = 0; i < notas.size(); i++) {
+            if (notas.get(i).getEstudiante().getCodigo().equalsIgnoreCase(cod)) {
+                notas.remove(i);
+                System.out.println("✅ Nota eliminada.");
+                return;
+            }
+        }
+        System.out.println("❌ No se encontró la nota.");
     }
 }
