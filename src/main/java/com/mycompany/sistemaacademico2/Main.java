@@ -164,7 +164,26 @@ public class Main {
             System.out.println("Error, no se encontro un estudiante con el codigo ingresado");
         }
     }
-    private static void eliminarEstudiante() {}
+    private static void eliminarEstudiante() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("\nEliminar Estudiante");
+        System.out.print("Ingrese el codigo del estudiante a eliminar: ");
+        String codigo = sc.nextLine();
+
+        boolean eliminado = false;
+        for (int i = 0; i < estudiantes.size(); i++) {
+            if (estudiantes.get(i).getCodigo().equalsIgnoreCase(codigo)) {
+                estudiantes.remove(i);
+                System.out.println("Estudiante eliminado correctamente");
+                eliminado = true;
+                break;
+            }
+        }
+
+        if (!eliminado) {
+            System.out.println("Error, no se encontro un estudiante con el codigo ingresado");
+        }
+    }
     private static void registrarAsignatura() {}
     private static void listarAsignaturas() {}
     private static void buscarAsignatura() {}
