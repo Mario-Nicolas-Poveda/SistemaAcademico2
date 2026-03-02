@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.mycompany.sistemaacademico2;
 
 import java.util.ArrayList;
@@ -13,8 +9,8 @@ import java.util.Scanner;
  */
 public class Main {
 
-    private static ArrayList<Estudiante> estudiantes = new ArrayList<>();
-    private static ArrayList<Asignatura> asignaturas = new ArrayList<>();
+    private static ArrayList<Estudiante> Estudiantes = new ArrayList<>();
+    private static ArrayList<Asignatura> Asignaturas = new ArrayList<>();
     private static ArrayList<Nota> notas = new ArrayList<>();
     Scanner sc = new Scanner(System.in);
 
@@ -24,7 +20,6 @@ public class Main {
 
     public static void mostrarMenu() {
         int opcion;
-
         do {
             System.out.println("\nSISTEMA ACADEMICO");
             System.out.println("1. Registrar Estudiante");
@@ -53,7 +48,7 @@ public class Main {
                 case 2 ->
                     listarEstudiantes();
                 case 3 ->
-                    buscarEstudiante();
+                    buscarEstudiante(codEst);
                 case 4 ->
                     actualizarEstudiante();
                 case 5 ->
@@ -63,7 +58,7 @@ public class Main {
                 case 7 ->
                     listarAsignaturas();
                 case 8 ->
-                    buscarAsignatura();
+                    buscarEstudiante();
                 case 9 ->
                     actualizarAsignatura();
                 case 10 ->
@@ -126,7 +121,7 @@ public class Main {
         }
     }
 
-    private static void buscarEstudiante() {
+    private static void buscarEstudiante(String codEst) {
         Scanner sc = new Scanner(System.in);
         System.out.println("\nBuscar Estudiante");
         System.out.print("Ingrese el codigo del estudiante: ");
@@ -283,38 +278,51 @@ public class Main {
     }
 
     private static void registrarNota() {
-        System.out.println("\n--- REGISTRAR NOTA ---");
-        System.out.print("Ingrese código del estudiante: ");
+        System.out.println("\n--- REGISTRAR CALIFICACIÓN ---");
+        System.out.print("Ingrese el código del estudiante: ");
         String codEst = sc.nextLine();
-        System.out.print("Ingrese código de la asignatura: ");
+        System.out.print("Ingrese el código de la asignatura: ");
         String codAsig = sc.nextLine();
 
-        Estudiante est = buscarEstudiante(codEst);
-        Asignatura asig = buscarAsignatura(codAsig);
+        Estudiante e = buscarEstudiante(codEst);
+        Asignatura a = buscarAsignatura(codAsig);
 
-        if (est != null && asig != null) {
+        if (e != null && a != null) {
             System.out.print("Ingrese el valor de la nota (0.0 - 5.0): ");
             double valor = sc.nextDouble();
-            sc.nextLine(); 
-            System.out.print("Ingrese el periodo (ej: 2024-1): ");
+            sc.nextLine();
+            System.out.print("Ingrese el periodo académico (ej: 2024-2): ");
             String periodo = sc.nextLine();
 
-            notas.add(new Nota(est, asig, valor, periodo));
-            System.out.println("Nota registrada con éxito.");
+            // Creamos el objeto Nota usando el constructor proporcionado
+            Nota nuevaNota = new Nota(e, a, valor, periodo);
+            notas.add(nuevaNota);
+            System.out.println("Nota registrada con éxito para el estudiante " + e.getNombre());
         } else {
-            System.out.println("Error: Estudiante o Asignatura no encontrados.");
+            System.out.println("Error: No se encontró el estudiante o la asignatura con esos códigos.");
         }
     }
 
     private static void listarNotas() {
+        System.out.println("\n--- LISTADO GENERAL DE NOTAS ---");
+        if (notas.isEmpty()) {
+            System.out.println("No hay notas registradas en el sistema.");
+        } else {
+            for (Nota n : notas) {
+                System.out.println(n.toString());
+            }
+        }
     }
 
     private static void buscarNota() {
+
     }
 
     private static void actualizarNota() {
+
     }
 
     private static void eliminarNota() {
+
     }
 }
