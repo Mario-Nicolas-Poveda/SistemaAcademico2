@@ -45,5 +45,9 @@ public class Asignatura
         this.docente = docente;
     }
     
-    
+    @Override
+    public String toString() {
+        return "Asignatura{" + "codigo=" + codigo + ", nombre=" + nombre
+                + ", creditos=" + creditos + ", docente=" + docente + '}';
+    }
 }
