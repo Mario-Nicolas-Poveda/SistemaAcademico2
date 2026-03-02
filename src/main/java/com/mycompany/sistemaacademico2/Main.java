@@ -199,8 +199,24 @@ public class Main {
         System.out.println("Asignatura registrada correctamente.");
 
      }
-    private static void listarAsignaturas() {}
-    private static void buscarAsignatura() {}
+    public static void listarAsignaturas() {
+        if (listaAsignaturas.isEmpty()) {
+            System.out.println("No hay asignaturas registradas.");
+            return;
+        }
+        for (Asignatura a : listaAsignaturas) {
+            System.out.println(a);
+        }
+    }
+     public static Asignatura buscarAsignatura(String codigo) {
+        for (Asignatura a : listaAsignaturas) {
+            if (a.getCodigo().equalsIgnoreCase(codigo)) {
+                return a;
+            }
+        }
+        return null;
+    }
+
     private static void actualizarAsignatura() {}
     private static void eliminarAsignatura() {}
     private static void registrarNota() {}
