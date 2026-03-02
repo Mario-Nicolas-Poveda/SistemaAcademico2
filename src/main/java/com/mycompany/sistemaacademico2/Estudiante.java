@@ -52,6 +52,17 @@ public class Estudiante {
     public void setSemestre(int semestre) {
         this.semestre = semestre;
     }
+
+    @Override
+    public String toString() {
+        return "Estudiante{" +
+                "codigo='" + codigo + '\'' +
+                ", nombre='" + nombre + '\'' +
+                ", programa='" + programa + '\'' +
+                ", semestre=" + semestre +
+                '}';
+    }  
+
     
     
 }
