@@ -95,8 +95,37 @@ public class Main {
 
         System.out.println("Estudiante registrado correctamente.");
     }
-    private static void listarEstudiantes() {}
-    private static void buscarEstudiante() {}
+    
+    private static void listarEstudiantes() {
+        System.out.println("\nListar Estudiantes");
+        if (estudiantes.isEmpty()) {
+            System.out.println("No hay estudiantes registrados");
+        } else {
+            for (Estudiante e : estudiantes) {
+                System.out.println(e);
+            }
+        }
+    }
+
+    private static void buscarEstudiante() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("\nBuscar Estudiante");
+        System.out.print("Ingrese el codigo del estudiante: ");
+        String codigo = sc.nextLine();
+
+        boolean encontrado = false;
+        for (Estudiante e : estudiantes) {
+            if (e.getCodigo().equalsIgnoreCase(codigo)) {
+                System.out.println("Estudiante encontrado: " + e);
+                encontrado = true;
+                break;
+            }
+        }
+
+        if (!encontrado) {
+            System.out.println("Error, no se encontro un estudiante con el codigo ingresado");
+        }
+    }
     private static void actualizarEstudiante() {}
     private static void eliminarEstudiante() {}
     private static void registrarAsignatura() {}
