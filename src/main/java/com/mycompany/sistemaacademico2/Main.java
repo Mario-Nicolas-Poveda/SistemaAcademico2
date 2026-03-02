@@ -342,8 +342,26 @@ public class Main {
         }
     }
 
-    private static void actualizarNota() {
+    private static void actualizarNota() 
+    {
+        System.out.println("\n--- ACTUALIZAR NOTA ---");
+        System.out.print("Ingrese código del estudiante: ");
+        String codE = sc.nextLine();
+        System.out.print("Ingrese código de la asignatura: ");
+        String codA = sc.nextLine();
 
+        for (Nota n : notas) {
+            if (n.getEstudiante().getCodigo().equalsIgnoreCase(codE)
+                    && n.getAsignatura().getCodigo().equalsIgnoreCase(codA)) {
+
+                System.out.print("Nota actual: " + n.getValor() + ". Ingrese el nuevo valor: ");
+                n.setValor(sc.nextDouble());
+                sc.nextLine(); // Limpiar buffer
+                System.out.println("✅ Nota actualizada correctamente.");
+                return;
+            }
+        }
+        System.out.println("❌ No se encontró un registro que coincida con esos datos.");
     }
 
     private static void eliminarNota() {
